@@ -28,5 +28,4 @@ def load_stock_data(path_tickers, path_stock_data='stock.json'):
 
 
 if __name__ == "__main__":
-    load_stock_data("msci_world_ticker_single.csv")
-    # print(yf.Ticker('MSFT').info)
+    print("Please use the functions.")
