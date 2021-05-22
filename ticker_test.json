@@ -1,0 +1,34 @@
+[
+    {
+      "ticker": "AAPL",
+      "name": "APPLE INC"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "MICROSOFT CORP"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "AMAZON COM INC"
+    },
+    {
+      "ticker": "HD",
+      "name": "HOME DEPOT INC"
+    },
+    {
+      "ticker": "VZ",
+      "name": "VERIZON COMMUNICATIONS INC"
+    },
+    {
+      "ticker": "ROG.SW",
+      "name": "ROCHE HOLDING PAR AG"
+    },
+    {
+      "ticker": "NFLX",
+      "name": "NETFLIX INC"
+    },
+    {
+      "ticker": "MC.PA",
+      "name": "LVMH"
+    }
+  ]
