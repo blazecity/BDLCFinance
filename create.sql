@@ -1,11 +1,13 @@
 CREATE DATABASE IF NOT EXISTS yfinance_api;
 USE yfinance_api;
 
+DROP TABLE IF EXISTS yfinance_api.src_latest_price_history_json;
 CREATE TABLE IF NOT EXISTS yfinance_api.src_latest_price_history_json (
     price_record STRING
 )
 STORED AS TEXTFILE;
 
+DROP VIEW IF EXISTS src_latest_price_history;
 CREATE VIEW IF NOT EXISTS src_latest_price_history AS 
     SELECT 
         get_json_object(price_record, '$.date') AS price_date, 
@@ -24,7 +26,7 @@ CREATE VIEW IF NOT EXISTS src_latest_price_history AS
         get_json_object(price_record, '$.currency') AS currency
     FROM src_latest_price_history_json;
 
-CREATE TABLE price_history (
+CREATE TABLE IF NOT EXISTS price_history (
     date_price STRING,
     open_price STRING,
     high_price STRING,
@@ -41,6 +43,6 @@ CREATE TABLE price_history (
     currency STRING
 );
 
-CREATE TABLE hwm_price_history (
+CREATE TABLE IF NOT EXISTS hwm_price_history (
     date STRING
 );
