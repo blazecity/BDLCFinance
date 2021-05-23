@@ -5,12 +5,12 @@ import sys
 import argparse
 
 
-def load_stock_data(ticker_symbol):
+def load_stock_data(ticker_symbol, data_period='max'):
     ticker = yf.Ticker(ticker_symbol)
     
     # company infos like name, sector, etc.
     ticker_info = ticker.info
-    history_df = ticker.history(period='max')
+    history_df = ticker.history(period=data_period)
     
     # add company info to data frame
     history_df['Ticker'] = ticker_symbol
@@ -28,5 +28,10 @@ def load_stock_data(ticker_symbol):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('symbol', help='Ticker symbol for Yahoo Finance, e. g. MSFT', type=str)
+    parser.add_argument('-d', '--day', help='Switch for the last day', action='store_true')
+    parser.add_argument('-m', '--max', help='Switch for the maximal available period', action='store_true')
     args = parser.parse_args()
-    load_stock_data(args.symbol)
+    if args.day:
+        load_stock_data(args.symbol, data_period='1d')
+    elif args.max:
+        load_stock_data(args.symbol)
