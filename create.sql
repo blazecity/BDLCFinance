@@ -8,11 +8,11 @@ STORED AS TEXTFILE;
 
 CREATE VIEW IF NOT EXISTS src_latest_price_history AS 
     SELECT 
-        get_json_object(price_record, '$.date') AS date, 
-        get_json_object(price_record, '$.open') AS open,
-        get_json_object(price_record, '$.high') AS high,
-        get_json_object(price_record, '$.low') AS low,
-        get_json_object(price_record, '$.close') AS close,
+        get_json_object(price_record, '$.date') AS price_date, 
+        get_json_object(price_record, '$.open') AS open_price,
+        get_json_object(price_record, '$.high') AS high_price,
+        get_json_object(price_record, '$.low') AS low_price,
+        get_json_object(price_record, '$.close') AS close_price,
         get_json_object(price_record, '$.volume') AS volume,
         get_json_object(price_record, '$.dividends') AS dividends,
         get_json_object(price_record, '$.stockSplits') AS stockSplits,
