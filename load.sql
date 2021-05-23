@@ -24,11 +24,13 @@ INSERT INTO TABLE tbl_price_history
 
 INSERT INTO TABLE tbl_hwm_price_history 
     SELECT ticker, MAX(price_date) AS price_date
-    FROM v_src_latest_price_history;
+    FROM v_src_latest_price_history
+    GROUP BY ticker;
 
 CREATE TEMPORARY TABLE tbl_tmp_hwm AS 
     SELECT ticker, MAX(price_date) AS price_date
-    FROM tbl_hwm_price_history;
+    FROM tbl_hwm_price_history 
+    GROUP BY ticker;
 
 INSERT OVERWRITE TABLE tbl_hwm_price_history 
     SELECT * FROM tbl_tmp_hwm;
