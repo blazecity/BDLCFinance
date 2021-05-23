@@ -24,7 +24,7 @@ CREATE VIEW IF NOT EXISTS v_src_latest_price_history AS
         get_json_object(price_record, '$.sector') AS sector,
         get_json_object(price_record, '$.marketcap') AS marketcap,
         get_json_object(price_record, '$.currency') AS currency
-    FROM src_latest_price_history_json;
+    FROM tbl_src_latest_price_history_json;
 
 CREATE TABLE IF NOT EXISTS tbl_price_history (
     date_price STRING,
