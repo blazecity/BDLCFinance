@@ -2,6 +2,29 @@ USE yfinance_api;
 
 LOAD DATA INPATH '/user/bd01/load/yfinance_price_history/yfinance_price_history.json' OVERWRITE INTO TABLE tbl_src_latest_price_history_json;
 
+-- load new stocks
+INSERT INTO TABLE tbl_price_history
+    SELECT
+        price_date,
+        open_price,
+        high_price,
+        low_price,
+        close_price,
+        volume,
+        dividends,
+        stockSplits,
+        ticker,
+        company,
+        country,
+        sector,
+        marketcap,
+        currency
+    FROM v_src_latest_price_history v
+    WHERE ticker NOT IN (SELECT hwm.ticker 
+                            FROM tbl_hwm_price_history hwm
+                            WHERE v.ticker = hwm.ticker);
+
+-- copy new prices on existing stocks
 INSERT INTO TABLE tbl_price_history
     SELECT
         v.price_date,
