@@ -27,7 +27,7 @@ CREATE VIEW IF NOT EXISTS v_src_latest_price_history AS
     FROM tbl_src_latest_price_history_json;
 
 CREATE TABLE IF NOT EXISTS tbl_price_history (
-    date_price STRING,
+    price_date STRING,
     open_price STRING,
     high_price STRING,
     low_price STRING,
@@ -47,5 +47,5 @@ STORED AS TEXTFILE;
 
 CREATE TABLE IF NOT EXISTS tbl_hwm_price_history (
     ticker STRING,
-    date_price STRING
+    price_date STRING
 );
