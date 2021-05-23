@@ -44,5 +44,5 @@ CREATE TABLE IF NOT EXISTS price_history (
 );
 
 CREATE TABLE IF NOT EXISTS hwm_price_history (
-    date STRING
+    date_price STRING
 );
