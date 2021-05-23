@@ -26,7 +26,7 @@ CREATE VIEW IF NOT EXISTS v_src_latest_price_history AS
         get_json_object(price_record, '$.currency') AS currency
     FROM tbl_src_latest_price_history_json;
 
-CREATE TABLE IF NOT EXISTS tbl_price_history (
+CREATE EXTERNAL TABLE IF NOT EXISTS tbl_price_history (
     price_date STRING,
     open_price STRING,
     high_price STRING,
