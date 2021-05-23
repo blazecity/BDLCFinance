@@ -1,14 +1,14 @@
 CREATE DATABASE IF NOT EXISTS yfinance_api;
 USE yfinance_api;
 
-DROP TABLE IF EXISTS yfinance_api.src_latest_price_history_json;
-CREATE TABLE IF NOT EXISTS yfinance_api.src_latest_price_history_json (
+DROP TABLE IF EXISTS yfinance_api.tbl_src_latest_price_history_json;
+CREATE TABLE IF NOT EXISTS yfinance_api.tbl_src_latest_price_history_json (
     price_record STRING
 )
 STORED AS TEXTFILE;
 
-DROP VIEW IF EXISTS src_latest_price_history;
-CREATE VIEW IF NOT EXISTS src_latest_price_history AS 
+DROP VIEW IF EXISTS v_src_latest_price_history;
+CREATE VIEW IF NOT EXISTS v_src_latest_price_history AS 
     SELECT 
         get_json_object(price_record, '$.date') AS price_date, 
         get_json_object(price_record, '$.open') AS open_price,
@@ -26,7 +26,7 @@ CREATE VIEW IF NOT EXISTS src_latest_price_history AS
         get_json_object(price_record, '$.currency') AS currency
     FROM src_latest_price_history_json;
 
-CREATE TABLE IF NOT EXISTS price_history (
+CREATE TABLE IF NOT EXISTS tbl_price_history (
     date_price STRING,
     open_price STRING,
     high_price STRING,
@@ -41,8 +41,10 @@ CREATE TABLE IF NOT EXISTS price_history (
     sector STRING,
     marketcap STRING,
     currency STRING
-);
+) 
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+STORED AS TEXTFILE;
 
-CREATE TABLE IF NOT EXISTS hwm_price_history (
+CREATE TABLE IF NOT EXISTS tbl_hwm_price_history (
     date_price STRING
 );
