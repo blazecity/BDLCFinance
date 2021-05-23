@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+cd $(dirname $0)
+test -d ./data || mkdir ./data
+rm -f ./data/yfinance_price_history.json
+
 jq -c '.[] | .ticker' $2 | while read i; do
     SYMBOL=$(echo $i | tr -d '\r"')
     echo "Current stock " ${SYMBOL}
