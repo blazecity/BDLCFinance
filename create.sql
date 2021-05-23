@@ -46,5 +46,6 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE;
 
 CREATE TABLE IF NOT EXISTS tbl_hwm_price_history (
+    ticker,
     date_price STRING
 );
