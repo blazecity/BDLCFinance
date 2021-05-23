@@ -3,7 +3,21 @@ USE yfinance_api;
 LOAD DATA INPATH '/user/bd01/load/yfinance_price_history/yfinance_price_history.json' OVERWRITE INTO TABLE tbl_src_latest_price_history_json;
 
 INSERT INTO TABLE tbl_price_history
-    SELECT *
+    SELECT
+        price_date,
+        open_price,
+        high_price,
+        low_price,
+        close_price,
+        volume,
+        dividends,
+        stockSplits,
+        ticker,
+        company,
+        country,
+        sector,
+        marketcap,
+        currency
     FROM v_src_latest_price_history v
     JOIN tbl_hwm_price_history hwm ON v.ticker = hwm.ticker
     WHERE v.price_date > hwm.price_date;
