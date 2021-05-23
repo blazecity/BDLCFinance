@@ -21,7 +21,7 @@ def load_stock_data(ticker_symbol):
     history_df['Currency'] = ticker_info['currency']
 
     # # convert data frame to JSON
-    json_string = history_df.to_json(orient='records')
+    json_string = history_df.to_json(orient='table')
     print(json_string)
 
 
