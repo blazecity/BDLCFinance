@@ -1,6 +1,6 @@
 USE yfinance_api;
 
-LOAD DATA INPATH '/user/bd01/load/yfinance_price_history/yfinance_price_history.json' OVERWRITE INTO TABLE src_latest_price_history_json;
+LOAD DATA INPATH '/user/bd01/load/yfinance_price_history/yfinance_price_history.json' OVERWRITE INTO TABLE tbl_src_latest_price_history_json;
 
 INSERT INTO TABLE tbl_price_history
     SELECT *
