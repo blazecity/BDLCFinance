@@ -25,18 +25,18 @@ CREATE VIEW IF NOT EXISTS src_latest_price_history AS
     FROM src_latest_price_history_json;
 
 CREATE TABLE price_history (
-    date STRING,
-    open STRING,
-    high STRING,
-    low STRING,
-    low STRING,
-    close STRING,
+    date_price STRING,
+    open_price STRING,
+    high_price STRING,
+    low_price STRING,
+    close_price STRING,
     volume STRING,
     dividends STRING,
     stockSplits STRING,
     ticker STRING,
     company STRING,
     country STRING,
+    sector STRING,
     marketcap STRING,
     currency STRING
 );
