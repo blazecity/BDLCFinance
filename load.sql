@@ -4,7 +4,7 @@ LOAD DATA INPATH '/user/bd01/load/yfinance_price_history/yfinance_price_history.
 
 INSERT INTO TABLE tbl_price_history
     SELECT
-        price_date,
+        v.price_date,
         open_price,
         high_price,
         low_price,
@@ -12,7 +12,7 @@ INSERT INTO TABLE tbl_price_history
         volume,
         dividends,
         stockSplits,
-        ticker,
+        v.ticker,
         company,
         country,
         sector,
