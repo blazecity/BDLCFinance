@@ -4,7 +4,7 @@ cd $(dirname $0)
 source ./config.sh
 
 # fetch and convert data
-./load_stock_data.sh -m ticker_test.json
+./load_stock_data.sh -d tickers.json
 
 # push file to HDFS
 ./push_hdfs.sh
